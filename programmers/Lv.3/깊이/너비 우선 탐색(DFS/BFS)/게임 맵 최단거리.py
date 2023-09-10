@@ -1,24 +1,24 @@
 from collections import deque
 def solution(maps):
-    n, m = len(maps), len(maps[0])
-    visited = [[False for _ in range(m)] for _ in range(n)]
-    return bfs(maps, 0, 0, visited)
-def bfs(maps, x, y, visited):
-    n, m = len(maps), len(maps[0])
-    queue = deque([(x,y)])
-    visited[x][y] = True
-    distance = {(x,y):0}
+    m, n = len(maps), len(maps[0])
+    visited = [[False for _ in range(n)] for _ in range(m)]
+    
+    distance = {(0,0): 1}
+    points = deque([(0,0)])
+    visited[0][0] = True
+    
     dx = [-1, 1, 0, 0]
     dy = [0, 0, -1, 1]
-    while queue:
-        x, y = queue.popleft()
+    
+    while points:
+        x, y = points.popleft()
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
-            if 0<=nx<n and 0<=ny<m and not visited[nx][ny] and maps[nx][ny]:
-                if (nx, ny) == (n-1, m-1):
-                    return distance[(x, y)] + 2
-                queue.append((nx,ny))
-                distance[(nx,ny)] = distance[(x,y)]+1
+            if 0 <= nx < m and 0 <= ny < n and not visited[nx][ny] and maps[nx][ny] == 1:
+                if (nx, ny) == (m-1 , n-1):
+                    return distance[(x, y)] + 1
                 visited[nx][ny] = True
+                distance[(nx,ny)] = distance[(x,y)] + 1
+                points.append((nx,ny))
     return -1
