@@ -34,14 +34,3 @@ while True:
             maps[r][c] = int(total/len(combined))
     answer +=1 
 print(answer)
-
-
-20 20 20
-20 20 20 
-40 20 10 
-
-50/3 17
-
-20 20 20 
-20 20 16
-40 16 16 
