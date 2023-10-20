@@ -12,7 +12,6 @@ def dst(start, end):
     visited[start] = 1
     q = []
     heapq.heappush(q,(0, start))
-
     while q:
         dist, now = heapq.heappop(q) 
         for next, value in enumerate(graph[now]):
@@ -23,15 +22,10 @@ def dst(start, end):
             heapq.heappush(q, (dist+1, next))
             visited[next] =1
     return visited[end]    
-# print(dst(city[0], city[-1]))
+
 answer = 0
 for i in range(len(city)-1):
     if dst(city[i], city[i+1]) != 1:
         print("NO")
         exit()
 print("YES")
-# 0 1 0 1 1
-# 1 0 1 1 0
-# 0 1 0 0 0
-# 1 1 0 0 0
-# 1 0 0 0 0s
