@@ -1,12 +1,14 @@
 while True:
     try:
-        case = int(input())
-        i = 1 
-        while case:
-            if int('1'*i) % case == 0:
+        n = int(input())
+        i = 1
+        num = 0 
+        while True:
+            num = num*10+1
+            num %= n
+            if num == 0:
                 print(i)
-                break
-            else:
-                i = i+1
+                break    
+            i = i+1        
     except:
         break
