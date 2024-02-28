@@ -31,5 +31,6 @@ for _ in range(n):
 a = [x for x in range(n)]
 answer = 1000000*n
 visited = [False for _ in range(n+1)]
-permutation([], n, a, visited, w)
+visited[0] = True
+permutation([0], n, a, visited, w)
 print(answer)
